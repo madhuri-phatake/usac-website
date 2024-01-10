@@ -1,0 +1,242 @@
+<% include layout/header %>
+    <style>
+        .input-field {
+            height: 55px !important
+        }
+
+        /* .tox {
+        height: 350px !important;
+    }
+    .tox-tinymce-aux {
+        position: fixed !important;
+    } */
+
+        .linkproductContainer {
+            max-height: 130px !important;
+            overflow-y: scroll;
+        }
+    </style>
+    <div id="main">
+        <div class="row">
+            <div class="content-wrapper-before transparent_bg"></div>
+
+            <div class="col s12">
+                <div class="container">
+                    <!-- users list start -->
+                    <section>
+                        <div class="row">
+
+
+
+                            <div id="popup_master" class="col s12">
+
+                                <!-- <div class="col s12"> -->
+                                <!-- <div class="container"> -->
+                                <input type="hidden" name="popup_id" id="popup_id" value="">
+
+                                <section class="users-list-wrapper section">
+                                    <div class="users-list-filter">
+                                        <div class="card-panel position-relative overflow-hidden"
+                                            style="min-height: 350px;">
+                                            <form id="popup_form">
+                                                <div class="row" style="margin-bottom: 60px !important;">
+                                                  
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0 datepicker" id="from_date" name="from_date"
+                                                            type="text" readonly>
+                                                        <label for="from_date"> From Date *</label>
+                                                    </div>
+
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0 datepicker" id="to_date" name="to_date"
+                                                            type="text" readonly>
+                                                        <label for="to_date"> To Date *</label>
+                                                    </div>
+
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="title" name="title" type="text">
+                                                        <label for="title"> Title *</label>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="cta_url" name="cta_url" type="text">
+                                                        <label for="cta_url">CTA URL *</label>
+                                                    </div>
+
+                                                    <div class="input-field col l3 mb-0">
+                                                        <textarea class="materialize-textarea m-0" id="description"
+                                                            name="description" maxlength="500"
+                                                            placeholder=""></textarea>
+                                                        <label for="description">Description *</label>
+                                                    </div>
+
+                                                    <div class="input-field col l3 mb-3 parent">
+                                                        <label for="popup_icon" class="font-12" style="position: unset;"
+                                                            title="Upload Popup Icon">Upload Image (600x600px):</label>
+                                                        <input type="file" id="popup_icon"
+                                                            data-append-class="popup_icon_container"
+                                                            data-progress-bar="popup_icon_bar"
+                                                            data-common-class="popup_icon"
+                                                            data-subfolder-name="popup_icons" data-is-multiple="false"
+                                                            title="Upload Popup Icon"
+                                                            onchange="UPLOAD_ICON(this, event)" name="popup_icon"
+                                                            value="" accept=".jpg, .png, .gif, .webp">
+                                                        <!-- Add .gif and .webp extensions -->
+                                                        <div class="progress m-0">
+                                                            <div id="popup_icon_bar" class="determinate"
+                                                                style="width: 0%;"></div>
+                                                        </div>
+                                                        <div class="product-image-preview popup_icon_container"></div>
+                                                    </div>
+
+
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="timeout_duration" name="timeout_duration"
+                                                            type="number" step="1">
+                                                        <label for="timeout_duration">Timeout Duration(In Sec) *</label>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="status"
+                                                            name="status">
+                                                            <option value="">Select status *</option>
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col l12 show-btn mt-2">
+                                                        <button type="submit" id="create_popup"
+                                                            class="btn btn-block flex-btn float-right indigo waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_popup_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="user_id" value="" id="user_id">
+                                    <div class="users-list-table">
+                                        <div class="card">
+                                            <div class="card-content">
+                                                <!-- datatable start -->
+                                                <div class="responsive-table">
+                                                    <table class="table" id="popup_table" style="width: 100%">
+
+                                                    </table>
+                                                </div>
+                                                <!-- datatable ends -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- </div> -->
+                                <div class="content-overlay"></div>
+                                <!-- </div> -->
+                                <div id="detail_description_modal" class="modal" style="width:80%">
+                                    <div class="modal-content">
+                                        <div class="row">
+                                            <h5>Detail Description</h5>
+                                            <hr>
+                                            <div id="append_detail_description"></div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="close_description_modal"
+                                            class="btn modal-action modal-close waves-effect waves-light gradient-45deg-deep-orange-orange">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include layout/footer %>
+        <!-- <script src="admin/custom/blog.js"></script> -->
+        <script src="admin/custom/popup_master.js"></script>
+        <script type="text/javascript" src="/admin/js/tinymce/tinymce/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
+            $(".varient_products").select2({
+                multiple: true
+            });
+
+
+            $(function () {
+                popup.base_url = "<%=baseURL%>";
+                popup.api_url = "<%=apiURL%>";
+                popup.init();
+            });
+
+            $(document).ready(function () {
+                $('.datepicker').datepicker({
+                    dateFormat: 'dd-mm-yy',
+                    defaultDate: new Date(),
+                    minDate: new Date(),
+     
+                });
+                tinymce.init({
+                    selector: "#detail_description",
+                    height: "400",
+                    plugins: 'print preview image importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help',
+                    toolbar: 'link image | code | undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | indent outdent | wordcount',
+                    file_picker_types: 'image',
+                    images_file_types: 'jpg,svg,webp,png,gif',
+                    file_picker_callback: (callback, value, meta) => {
+                        const input = document.createElement('input');
+                        var bucketName = "adbanao";
+                        var s3 = new AWS.S3({
+                            apiVersion: "2006-03-01",
+                            params: {
+                                Bucket: bucketName,
+                            },
+                        });
+                        input.setAttribute('type', 'file');
+                        input.setAttribute('accept', 'image/*');
+                        input.addEventListener('change', (e) => {
+                            const file = e.target.files[0];
+                            var bucketName = "adbanao";
+                            var s3 = new AWS.S3({
+                                apiVersion: "2006-03-01",
+                                params: {
+                                    Bucket: bucketName,
+                                },
+                            });
+                            if (file) {
+                                var Extension = file.name.substring(file.name.lastIndexOf(".") + 1).toLowerCase();
+                                var fileName = file.name.split(".");
+                                var filePath = "blog_images/" + fileName[0] + "." + Extension;
+                                var fileUrl = "https://adbanao-blog-imgs.com/" + filePath;
+                                s3.upload({
+                                    Key: filePath,
+                                    Body: file,
+                                    ACL: 'public-read'
+                                }, function (err, data) {
+                                    if (err) {
+                                        reject('error');
+                                    } else {
+                                        // Provide image and alt text for the image dialog
+                                        if (meta.filetype == 'image') {
+                                            callback(`${data.Location}`, { alt: fileName[0] });
+                                        }
+                                    }
+
+                                }).on('httpUploadProgress', function (progress) {
+                                    var uploaded = parseInt((progress.loaded * 100) / progress.total);
+                                    $("progress").attr('value', uploaded);
+                                });
+                            }
+
+                        });
+                        input.click();
+                    }
+
+                });
+                $('.modal').modal();
+            });
+        </script>

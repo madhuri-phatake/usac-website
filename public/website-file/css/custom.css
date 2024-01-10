@@ -1,0 +1,44 @@
+.card{
+    padding: 10px;
+}
+.explore-btn{
+    width: 100%;
+}
+.owl-prev{
+    background-color: #fff !important;
+}
+@media only screen and (max-width: 767px) {
+    .mobile-test-center{
+     text-align: center;
+    }
+    .pe-5{
+        padding: unset !important; 
+        padding: 0px 20px !important;
+    }
+    .mobile-text-heaght{
+        font-size: 30px !important;
+        line-height: 1.6;
+    }
+    .mobile-flex{
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}
+.card-flex{
+    display: flex;
+    flex-direction: column;
+}
+.lead{
+    color: #000;
+    font-weight: 600;
+}
+.popuptitle{
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 14px !important;
+    margin-bottom: 10px !important;
+    
+}
+.modal-body hr{
+    margin: 10px 0px !important;
+}

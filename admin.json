@@ -1,0 +1,7 @@
+{
+    "apps": [{
+        "name": "adbanao_blog_admin",
+        "script": "npm",
+        "args": "start"
+    }]
+}

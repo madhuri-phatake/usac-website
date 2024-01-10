@@ -1,0 +1,236 @@
+<% include layout/header %>
+    <style>
+        .input-field {
+            height: 55px !important
+        }
+
+        /* .tox {
+        height: 350px !important;
+    }
+    .tox-tinymce-aux {
+        position: fixed !important;
+    } */
+
+        .linkproductContainer {
+            max-height: 130px !important;
+            overflow-y: scroll;
+        }
+        .todoy{
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+    <div id="main">
+        <div class="row">
+            <div class="content-wrapper-before transparent_bg"></div>
+
+            <div class="col s12">
+                <div class="container">
+                    <!-- users list start -->
+                    <section>
+                        <div class="row">
+
+
+
+                            <div id="home_master" class="col s12">
+
+                                <!-- <div class="col s12"> -->
+                                <!-- <div class="container"> -->
+                                <input type="hidden" name="home_id" id="home_id" value="">
+
+                                <section class="users-list-wrapper section">
+                                    <div class="users-list-filter">
+                                        <div class="card-panel position-relative overflow-hidden">
+                                            <form id="home_form">
+                                                <div class="row" style="margin-bottom: 60px !important;">
+
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0 datepicker-from" id="from_date" name="from_date"
+                                                            type="text" readonly>
+                                                        <label for="from_date"> From Date *</label>
+                               
+                                                    </div>
+
+                                                    <div class="input-field col l3 mb-0" id="todate">
+                                                        <input class="m-0 datepicker-to" id="to_date" name="to_date"
+                                                            type="text" readonly>
+                                                        <label for="to_date"> To Date *</label>
+                                                        <samp class="todoy">X</samp>
+                                                    </div>
+
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="title" name="title" type="text">
+                                                        <label for="title"> Title *</label>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="cta_url" name="cta_url" type="text">
+                                                        <label for="cta_url">CTA URL *</label>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="priority" name="priority" type="number">
+                                                        <label for="priority">Priority *</label>
+                                                    </div>
+
+                                                    <div class="input-field col l3 mb-3 parent">
+                                                        <label for="home_icon" class="font-12" style="position: unset;"
+                                                            title="Upload home Icon">Upload Image (358x358px):</label>
+                                                        <input type="file" id="home_icon"
+                                                            data-append-class="home_icon_container"
+                                                            data-progress-bar="home_icon_bar"
+                                                            data-common-class="home_icon"
+                                                            data-subfolder-name="home_icons" data-is-multiple="false"
+                                                            title="Upload home Icon" onchange="UPLOAD_ICON(this, event)"
+                                                            name="home_icon" value="" accept=".jpg, .png, .gif, .webp">
+                                                        <!-- Add .gif and .webp extensions -->
+                                                        <div class="progress m-0">
+                                                            <div id="home_icon_bar" class="determinate"
+                                                                style="width: 0%;"></div>
+                                                        </div>
+                                                        <div class="product-image-preview home_icon_container"></div>
+                                                    </div>
+
+                                                    <div class="input-field col l3 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="status"
+                                                            name="status">
+                                                            <option value="">Select status *</option>
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col l12 show-btn mt-2">
+                                                        <button type="submit" id="create_home"
+                                                            class="btn btn-block flex-btn float-right indigo waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_home_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="user_id" value="" id="user_id">
+                                    <div class="users-list-table">
+                                        <div class="card">
+                                            <div class="card-content">
+                                                <!-- datatable start -->
+                                                <div class="responsive-table">
+                                                    <table class="table" id="home_table" style="width: 100%">
+
+                                                    </table>
+                                                </div>
+                                                <!-- datatable ends -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- </div> -->
+                                <div class="content-overlay"></div>
+                                <!-- </div> -->
+
+
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include layout/footer %>
+        <!-- <script src="admin/custom/blog.js"></script> -->
+        <script src="admin/custom/home.js"></script>
+        <script type="text/javascript" src="/admin/js/tinymce/tinymce/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
+            $(".varient_products").select2({
+                multiple: true
+            });
+
+
+            $(function () {
+                home.base_url = "<%=baseURL%>";
+                home.api_url = "<%=apiURL%>";
+                home.init();
+            });
+
+            $(document).ready(function () {
+                $('.datepicker-from').datepicker({
+                    dateFormat: 'dd-mm-yy',
+                    defaultDate: new Date(),
+                    minDate: new Date(),
+                });
+                $('.datepicker-to').datepicker({
+                    dateFormat: 'dd-mm-yy',
+                    defaultDate: new Date(),
+                    minDate: new Date(),
+                    onSelect: function(){
+                        $(".todoy").show()  
+                    }
+                });
+                tinymce.init({
+                    selector: "#detail_description",
+                    height: "400",
+                    plugins: 'print preview image importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help',
+                    toolbar: 'link image | code | undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | indent outdent | wordcount',
+                    file_picker_types: 'image',
+                    images_file_types: 'jpg,svg,webp,png,gif',
+                    file_picker_callback: (callback, value, meta) => {
+                        const input = document.createElement('input');
+                        var bucketName = "adbanao";
+                        var s3 = new AWS.S3({
+                            apiVersion: "2006-03-01",
+                            params: {
+                                Bucket: bucketName,
+                            },
+                        });
+                        input.setAttribute('type', 'file');
+                        input.setAttribute('accept', 'image/*');
+                        input.addEventListener('change', (e) => {
+                            const file = e.target.files[0];
+                            var bucketName = "adbanao";
+                            var s3 = new AWS.S3({
+                                apiVersion: "2006-03-01",
+                                params: {
+                                    Bucket: bucketName,
+                                },
+                            });
+                            if (file) {
+                                var Extension = file.name.substring(file.name.lastIndexOf(".") + 1).toLowerCase();
+                                var fileName = file.name.split(".");
+                                var filePath = "blog_images/" + fileName[0] + "." + Extension;
+                                var fileUrl = "https://adbanao-blog-imgs.com/" + filePath;
+                                s3.upload({
+                                    Key: filePath,
+                                    Body: file,
+                                    ACL: 'public-read'
+                                }, function (err, data) {
+                                    if (err) {
+                                        reject('error');
+                                    } else {
+                                        // Provide image and alt text for the image dialog
+                                        if (meta.filetype == 'image') {
+                                            callback(`${data.Location}`, { alt: fileName[0] });
+                                        }
+                                    }
+
+                                }).on('httpUploadProgress', function (progress) {
+                                    var uploaded = parseInt((progress.loaded * 100) / progress.total);
+                                    $("progress").attr('value', uploaded);
+                                });
+                            }
+
+                        });
+                        input.click();
+                    }
+
+                });
+                $('.modal').modal();
+            });
+        </script>

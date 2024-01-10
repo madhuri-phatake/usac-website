@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+      <meta name="description"
+            content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
+      <meta name="keywords"
+            content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
+      <meta name="author" content="ThemeSelect">
+      <title><%= title %></title>
+      <link rel="apple-touch-icon" href="/website-file/all-img/logo.png">
+      <link rel="shortcut icon" type="image/x-icon" href="/website-file/all-img/logo.png">
+      <link rel="icon" type="image/png" href="/website-file/all-img/logo.png">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- BEGIN: VENDOR CSS-->
+      <link rel="stylesheet" type="text/css" href="/admin/vendors/vendors.min.css">
+      <link rel="stylesheet" href="/admin/vendors/select2/select2.min.css" type="text/css">
+      <link rel="stylesheet" href="/admin/vendors/select2/select2-materialize.css" type="text/css">
+      <link rel="stylesheet" type="text/css" href="/admin/vendors/animate-css/animate.css">
+      <link rel="stylesheet" type="text/css" href="/admin/vendors/chartist-js/chartist.min.css">
+      <link rel="stylesheet" type="text/css" href="/admin/vendors/chartist-js/chartist-plugin-tooltip.css">
+      <link rel="stylesheet" type="text/css" href="/admin/vendors/flag-icon/css/flag-icon.min.css">
+      <link rel="stylesheet" type="text/css" href="/admin/vendors/data-tables/css/jquery.dataTables.min.css">
+      <link rel="stylesheet" type="text/css"
+            href="/admin/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css">
+      <link rel="stylesheet" type="text/css" href="/admin/vendors/data-tables/css/select.dataTables.min.css">
+      <!-- END: VENDOR CSS-->
+      <!-- BEGIN: Page Level CSS-->
+      <link rel="stylesheet" type="text/css" href="/admin/css/themes/vertical-modern-menu-template/materialize.css">
+      <link rel="stylesheet" type="text/css" href="/admin/css/themes/vertical-modern-menu-template/style.css">
+      <link rel="stylesheet" type="text/css" href="/admin/css/pages/dashboard-modern.css">
+      <link rel="stylesheet" type="text/css" href="/admin/css/pages/intro.css">
+      <link rel="stylesheet" type="text/css" href="/admin/css/pages/form-select2.css">
+      <!-- END: Page Level CSS-->
+      <!-- BEGIN: Custom CSS-->
+      <link rel="stylesheet" type="text/css" href="/admin/css/custom/custom.css">
+      <link rel="stylesheet" type="text/css" href="/admin/toastr/toastr.css">
+      <link rel="stylesheet" type="text/css" href="/admin/css/lightbox.min.css">
+      <link rel="stylesheet" type="text/css" href="/admin/vendors/sweetalert/sweetalert.css">
+      
+      <script type="text/javascript">
+
+            (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="/admin/js/custom/branch.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking getBrowserFingerprintId crossPlatformIds lastAttributedTouchData".split(" "), 0);
+      
+            branch.init("<%=branch_key%>", function(err, data) {
+            // callback to handle err or data
+            // console.log(err);
+            // console.log(data);
+            });
+      </script>
+      <!-- END: Custom CSS-->
+      <style>
+            .loader_section {
+                  position: fixed;
+                  background: rgba(255, 255, 255, 0.822);
+                  width: 100%;
+                  height: 100%;
+                  z-index: 999999999999999999999 !important;
+            }
+            .swal-text {
+                  font-size: 13px !important;
+            }
+
+            .lottie_loader {
+                  position: fixed;
+                  width: 100px;
+                  height: 100px;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: inherit;
+            }
+      </style>
+
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns   "
+      data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
+      <!-- background image -->
+      <script src="admin/js/lottie.js"></script>
+      <div class="loader_section" style="display: none;">
+            <div id="loaderLottie" class="lottie_loader"></div>
+      </div>
+      <script>
+		var params = {
+			container: document.getElementById('loaderLottie'),
+			renderer: 'svg',
+			loop: true,
+			autoplay: true,
+			path: 'admin/js/data.json'
+		};
+		var anim;
+		anim = lottie.loadAnimation(params);
+	</script>
+
+      <div class="luke_bg bg-image">
+      </div>
+      <!-- BEGIN: Header-->
+      <header class="page-topbar" id="header">
+            <div class="navbar navbar-fixed">
+                  <nav
+                        class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark transparent_bg no-shadow">
+                        <div class="nav-wrapper">
+                              <div class="header-search-wrapper hide-on-med-and-down">
+                                    <i class="material-icons">dashboard</i>
+                                    <p style="color:#fff; line-height: 10px; margin-left:60px; font-size: 18px;">
+                                          <%= title %></p>
+                              </div>
+                              <ul class="navbar-list right">
+                                    <li>
+                                          <p style="line-height: 20px; margin:0px; padding: 10px; text-align: right;">
+                                                <span style="font-size: 12px;"> Welcome,</span><br>
+                                                <%= name %>
+                                          </p>
+                                    </li>
+                                    <%if (user_type == "admin" || user_type == "staff") { %>
+                                    <li><a class="waves-effect waves-block waves-light profile-button"
+                                                href="javascript:void(0);" data-target="profile-dropdown"><span
+                                                      class="avatar-status avatar-online"><img
+                                                            src="/admin/images/user.png" alt="avatar"></span></a>
+                                    </li>
+                                    <% } else { %>
+                                          <li><a class="waves-effect waves-block waves-light profile-button"
+                                                href="javascript:void(0);" data-target="profile-dropdown"><span
+                                                      class="avatar-status avatar-online"><img
+                                                            src="<%= vendor_profile_image%>" onerror="this.src='/admin/images/user.png';" alt="avatar"></span></a>
+                                          </li> 
+                                    <% } %>
+                              </ul>
+
+                              <!-- profile-dropdown-->
+                              <ul class="dropdown-content" id="profile-dropdown">
+                                    <%if (user_type == "admin" || user_type == "staff") { %>
+                                    <!-- <li><a class="grey-text text-darken-1" href="/profile"><i
+                                                      class="material-icons">person_outline</i> Profile</a></li>
+                                    <li class="divider"></li> -->
+                                    <li><a class="grey-text text-darken-1" href="/login/logout" id="log_out_btn"><i
+                                                      class="material-icons">keyboard_tab</i>
+                                                Logout</a></li>
+                                    <% } %>
+                                    <%if (user_type == "vendor") { %>
+                                    <li><a class="grey-text text-darken-1" href="/vendor-profile"><i
+                                                      class="material-icons">person_outline</i> Profile</a></li>
+                                    <li class="divider"></li>
+                                    <li><a class="grey-text text-darken-1" href="/vendor_login/logout_vendor"
+                                                id="log_out_btn"><i class="material-icons">keyboard_tab</i>
+                                                Logout</a></li>
+                                    <% } %>
+                              </ul>
+                        </div>
+                  </nav>
+            </div>
+      </header>
+      <!-- BEGIN: SideNav-->
+      
+      <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
+            <%if (user_type == "admin" || user_type == "staff") { %>
+            <div class="brand-sidebar">
+                  <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="/certificate-master">
+                              <img class="hide-on-med-and-down" id="header_logo" src="/website-file/all-img/logo.png"
+                                    alt="lukes logo" /></a>
+                        <a class="navbar-toggler" href="javascript:void(0);">
+                              <i class="material-icons">radio_button_checked</i>
+                        </a>
+                  </h1>
+            </div>
+            <% } else { %>
+                  <div class="brand-sidebar">
+                        <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="/vendor_dashboard">
+                                    <img class="hide-on-med-and-down" id="header_logo" src="/website-file/all-img/logo.png"
+                                          alt="lukes logo" /></a>
+                              <a class="navbar-toggler" href="javascript:void(0);">
+                                    <i class="material-icons">radio_button_checked</i>
+                              </a>
+                        </h1>
+                  </div>
+            <% } %>
+            <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow"
+                  id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
+                  <!-- Admin Tabs -->
+                  <%if (user_type == "admin" || user_type == "staff") { %>
+
+                  <li onclick="makeActive(this)" class="tab_admin_dashboard" style="display: none;" data-name="tab_admin_dashboard">
+                        <a class="waves-effect waves-cyan" href="/admin-login">
+                              <i class="material-icons">settings_input_svideo</i>
+                              <span class="menu-title">Dashboard</span>
+                        </a>
+                  </li>
+                  <!-- <li onclick="makeActive(this)" class="tab_admin_common" data-name="tab_admin_common">
+                        <a class="waves-effect waves-cyan" href="/common-master">
+                              <i class="material-icons">person</i>
+                              <span class="menu-title">User Master</span>
+                        </a>
+                  </li> -->
+           
+                  <li onclick="makeActive(this)" class="tab_certificate-master" id="view-controll-certificate-master"
+                  data-name="tab_blog_master">
+                        <a class="waves-effect waves-cyan " href="/certificate-master">
+                              <i class="material-icons">receipt</i>
+                              <span class="menu-title">Certificate Master</span>
+                        </a>
+                  </li>
+            
+                  <% } %>
+                  <%if (user_type == "vendor" && (vendor_state == "pending" || vendor_state == "rejected")) { %>
+                  <!-- Not Approved Vendor-->
+                  <li class="active">
+                        <a class="waves-effect waves-cyan active" href="JavaScript:void(0)">
+                              <i class="material-icons">live_help</i>
+                              <span class="menu-title">How it works</span>
+                        </a>
+                  </li>
+                  <% } %>
+                  <%if (user_type == "vendor" && vendor_state == "approved") { %>
+                  <!-- Approved Vendor-->
+                  <li onclick="makeActive(this)" class="tab_dashboard" data-name="tab_dashboard">
+                        <a class="waves-effect waves-cyan" href="/vendor_dashboard">
+                              <i class="material-icons">dashboard</i>
+                              <span class="menu-title">Dashboard</span>
+                        </a>
+                  </li>
+                  <li onclick="makeActive(this)" class="tab_products" data-name="tab_products">
+                        <a class="waves-effect waves-cyan " href="/products">
+                              <i class="material-icons">library_add</i>
+                              <span class="menu-title">Products</span>
+                        </a>
+                  </li>
+                  <li onclick="makeActive(this)" class="tab_order" data-name="tab_order">
+                        <a class="waves-effect waves-cyan " href="/vendor-orders">
+                              <i class="material-icons">content_paste</i>
+                              <span class="menu-title">Orders</span>
+                        </a>
+                  </li>
+                  <li onclick="makeActive(this)" class="tab_servicable_areas" data-name="tab_servicable_areas">
+                        <a class="waves-effect waves-cyan " href="/servicable-areas">
+                              <i class="material-icons">content_paste</i>
+                              <span class="menu-title">Manage Serviceable Areas</span>
+                        </a>
+                  </li>
+                  <li onclick="makeActive(this)" class="tab_manage_profile" data-name="tab_manage_profile">
+                        <a class="waves-effect waves-cyan " href="/vendor-profile">
+                              <i class="material-icons">person_outline</i>
+                              <span class="menu-title">My Profile</span>
+                        </a>
+                  </li>
+                  
+                  <li onclick="localStorage.removeItem('tab_name')" id="view-controll-documents"
+                        class="tab_documents" data-name="tab_documents">
+                        <a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i
+                                    class="material-icons">assignment</i><span class="menu-title">Documents</span></a>
+                        <div class="collapsible-body">
+                              <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                                    <li><a class="waves-effect waves-cyan" data-toggle="tooltip" title="Privacy Policy, Terms & Conditions" target="_blank" href="https://www.youcarelifestyle.com/privacy-policy"><i
+                                                      class="material-icons">radio_button_unchecked</i>Privacy Policy</a>
+                                    </li>
+                                    <li><a class="waves-effect waves-cyan" data-toggle="tooltip" title="Marketplace Seller, Return, Refund & Cancellation Policies" target="_blank" href="https://www.youcarelifestyle.com/marketplace-seller-agreement"><i
+                                                      class="material-icons">radio_button_unchecked</i>
+                                                Marketplace Seller Agreement</a>
+                                    </li>
+                                    <li><a class="waves-effect waves-cyan" data-toggle="tooltip" title="Download Document" target="_blank" id="delivery_charges_document" href=""><i
+                                          class="material-icons">radio_button_unchecked</i>
+                                    XB Charges Document</a>
+                                    </li>
+                                    <li><a class="waves-effect waves-cyan" data-toggle="tooltip" title="Download Document" target="_blank" href="/documents/delhivery_charge_document.pdf"><i
+                                          class="material-icons">radio_button_unchecked</i>
+                                    Delhivery Document</a>
+                                    </li>
+                                    <li><a class="waves-effect waves-cyan" data-toggle="tooltip" title="Download Document" target="_blank"  href="/documents/BannedProductAndIngredients.pdf"><i
+                                          class="material-icons">radio_button_unchecked</i>
+                                    Banned Product & Ingredient Document</a>
+                                    </li>
+                                    <li><a class="waves-effect waves-cyan" href="javascript:void(0);"><i
+                                                      class="material-icons">radio_button_unchecked</i>
+                                               Help & Support</a>
+                                    </li>
+                              </ul>
+                        </div>
+                  </li>
+                  <!-- <li onclick="makeActive(this)" class="tab_vendor_reports" data-name="tab_vendor_reports">
+                        <a class="waves-effect waves-cyan " href="JavaScript:void(0)">
+                              <i class="material-icons">content_paste</i>
+                              <span class="menu-title">Reports</span>
+                        </a>
+                  </li> -->
+
+                  <% } %>
+            </ul>
+            <div class="navigation-background"></div><a
+                  class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only"
+                  href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
+      </aside>
+      <!-- END: SideNav-->

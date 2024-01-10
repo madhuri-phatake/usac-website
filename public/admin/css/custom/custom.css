@@ -1,0 +1,322 @@
+/*================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 5.0
+	Author: PIXINVENT
+	Author URL: https://themeforest.net/user/pixinvent/portfolio
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN CSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+.showaccess {
+    display: none;
+}
+
+.star {
+    color: #e73b7f;
+    font-size: 20px;
+}
+
+.table-input {
+    height: 1.5rem !important;
+}
+
+.dataTables_length input {
+    height: 1.5rem !important;
+}
+
+.m-title {
+    border-bottom: 1px solid #3333;
+    /* margin-bottom: 12px; */
+    padding-bottom: 10px;
+}
+
+.filter_box {
+    border: 1px solid #3333;
+    padding: 20px !important;
+    margin-bottom: 10px;
+}
+
+.usersform .error {
+
+    color: red;
+}
+
+.usersform label.error {
+    margin-top: -10px;
+    font-size: .8rem;
+}
+
+.flex-btn {
+    line-height: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.close-user-form {
+    position: absolute;
+    right: 50px;
+    width: 10px;
+    top: 3px;
+    height: 10px;
+}
+
+.delete {
+    color: red !important;
+}
+
+.border-left-gray {
+    border-left: 1px solid gray;
+}
+
+.luke_bg {
+    background-color: #136C60 !important;
+}
+
+.transparent_bg {
+    background: transparent !important;
+}
+
+.bg-image {
+    height: 40vh;
+    width: 100%;
+    position: absolute;
+}
+
+.nav-wrapper {
+    transition: .5s;
+}
+
+.page-topbar.sticky .nav-wrapper {
+    background: #000;
+    background: url('../../images/gallery/green_blue.jpg') !important;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 5px #000000;
+    transition: .5s;
+}
+
+.comment-box {
+    width: 90%;
+}
+
+.comment-pill {
+    background: #fafafa;
+    border-radius: 10px;
+    margin: 10px 0px;
+    position: relative;
+}
+
+.commenter-name {
+    color: #888888;
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 14px;
+    background: #fff;
+    box-shadow: 0px 0px 5px #cfcfcf;
+    border-radius: 50px;
+    padding: 5px 10px;
+}
+
+.select-pill>.select-wrapper {
+    background: #fff !important;
+    box-shadow: 0px 0px 5px #cfcfcf;
+    border-radius: 50px;
+    padding: 0px 10px;
+}
+
+.select-pill>.select-wrapper input {
+    border: none;
+    font-size: 14px !important;
+}
+
+.comment-text {
+    text-align: justify;
+    font-size: 14px;
+    height: 120px;
+    border: none;
+    box-shadow: 0px 0px 5px #cfcfcf;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.comment-form {
+    background: #000;
+    margin: 10px 10px;
+    border-radius: 50px;
+    padding: 20px 10px;
+}
+
+.product-image-preview,
+.product-image-preview1,
+.product-image-preview2,
+.product-image-preview3,
+.product-image-preview4 {
+    max-height: 105px;
+    width: 100%;
+    position: relative;
+    padding-top: 5px;
+    display: flex;
+    column-gap: 5px;
+    overflow: auto;
+    flex-flow: column wrap;
+}
+
+.show-img-box {
+    max-height: 100px;
+    width: 100%;
+    position: relative;
+    padding-top: 5px;
+    display: flex;
+    column-gap: 5px;
+    columns: 2;
+    overflow-x: scroll;
+    flex-flow: column wrap;
+}
+
+.product-image-preview::-webkit-scrollbar,
+.product-image-preview1::-webkit-scrollbar,
+.product-image-preview2::-webkit-scrollbar,
+.product-image-preview3::-webkit-scrollbar,
+.product-image-preview4::-webkit-scrollbar,
+.show-img-box::-webkit-scrollbar {
+    height: 5px;
+    background: #ececec;
+    border-radius: 50px;
+}
+
+.product-image-preview::-webkit-scrollbar-thumb,
+.product-image-preview1::-webkit-scrollbar-thumb,
+.product-image-preview2::-webkit-scrollbar-thumb,
+.product-image-preview3::-webkit-scrollbar-thumb,
+.product-image-preview4::-webkit-scrollbar-thumb,
+.show-img-box::-webkit-scrollbar-thumb {
+    height: 5px;
+    background: rgb(185, 185, 185);
+    border-radius: 50px;
+}
+
+.remove-img-btn {
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    color: #f00;
+    border: none;
+    text-align: center;
+    border-radius: 50px;
+    height: 15px;
+    width: 15px;
+    top: 0px;
+    right: 0px;
+    background: transparent;
+}
+
+.remove-img-btn:hover {
+    box-shadow: 0px 0px 5px #cfcfcf;
+    background: #fff;
+}
+
+.remove-img-btn i {
+    font-size: 10px;
+}
+
+.image-preview {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    
+}
+
+.image-preview img {
+    width: 100%;
+}
+
+.btn-white{
+    background: #fff !important;
+    box-shadow: 0px 0px 5px #cfcfcf;
+    color: green !important;
+    transition: .5s;
+}
+.btn-white:hover{
+    background: green !important;
+    box-shadow: 0px 0px 5px #cfcfcf;
+    color: #fff !important;
+    transition: .5s;
+}
+.dataTables_length label{
+    display: flex !important;
+    align-items: center !important;
+}
+.dataTables_length label select{
+    display: flex !important;
+    margin: 0px 0px 0px 5px !important;
+}
+.dataTables_filter label{
+    display: flex;
+    align-items:center;
+    justify-content: space-around !important;
+}
+.dataTables_filter label input{
+    border: 1px solid #cfcfcf !important;
+    margin: 0px 0px 0px 5px !important;
+    padding: 0px 5px !important;
+}
+.edit-info {
+    display: none;
+}
+
+#recipeview_form #u_brand_label-error {
+    display: inline-flex;
+}
+
+.edit_product_modal {
+    width: 90% !important;
+    max-height: 90% !important;
+    top: 5% !important;
+}
+
+fieldset {
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+#course_detail_form .select-wrapper+label{
+    top: -6px;
+}
+#course_detail_form .input-field>label{
+    top:-6px;
+}
+#course_detail_form .input-field1>label{
+    top: 80px;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.upload-btn-wrapper{
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+
+}
+#luke_form select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    height: 100px;
+    overflow-y: scroll;
+    padding-right: 20px;
+}

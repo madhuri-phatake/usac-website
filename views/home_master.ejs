@@ -1,0 +1,1241 @@
+<% include layout/header %>
+<style>
+    .a-101:hover {
+        color: #000 !important;
+    }
+
+    .abc-101 {
+        text-transform: capitalize !important;
+    }
+    .responsive-navbar-class::-webkit-scrollbar {
+        width: 2px;
+    }
+    .responsive-navbar-class {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        display: flex;
+        height: auto !important;
+        flex-wrap: nowrap;
+    }
+    .d-flex {
+        display: flex!important;
+    }
+</style>
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before transparent_bg"></div>
+        <div class="col s12">
+            <div class="container">
+                <!-- users list start -->
+                <section>
+                    <div class="row">
+                        <div class="col s12">
+                            <nav class="nav-extended">
+                                <div class="nav-content">
+                                    <ul class="tabs tabs-transparent responsive-navbar-class">
+                                        <li class="tab"><a href="#banner_management">Top Banners</a>
+                                        </li>
+                                        <li class="tab"><a href="#featured_banner">Featured Banners</a>
+                                        </li>
+                                        <li class="tab"><a href="#topic_master">Topic Master</a>
+                                        </li>
+                                        <li class="tab"><a href="#top_products">Top Products</a>
+                                        </li>
+                                        <li class="tab"><a href="#spotlight_banner">Spotlight/Gift Card Banners</a>
+                                        </li>
+                                        <li class="tab"><a href="#shop_by_brand">Shop By Brand Banners</a>
+                                        </li>
+                                        <li class="tab"><a href="#recipe_category">Recipe Category</a>
+                                        </li>
+                                        <li class="tab"><a href="#recipe">Recipe</a>
+                                        </li>
+                                        <li class="tab"><a href="#newsletter">Newsletter</a>
+                                        </li>
+                                        <li class="tab"><a href="#video">Video</a>
+                                        </li>
+                                        <li class="tab"><a href="#media">Media</a>
+                                        </li>
+                                        <li class="tab"><a href="#settings">Settings</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        
+                        <div id="banner_management" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="banner_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l2 mb-0 mt-2">
+                                                        <select class="m-0 p-0 browser-default" id="banner_location"
+                                                            name="banner_location">
+                                                            <option value="home">Select Banner Page</option>
+                                                            <option value="home">Home Page</option>
+                                                            <option value="category">Category Pages</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0 mt-2" id="outer_banner_location_id">
+                                                        <select class="m-0 p-0 browser-default" id="banner_location_id"
+                                                            name="banner_location_id">
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="col l7 show-btn mt-1">
+                                                        <button type="submit" id="create_banner"
+                                                            class="btn btn-block flex-btn float-right gradient-45deg-green-teal waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_banner_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-field col l2 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="banner_type"
+                                                            name="banner_type" onchange="banner.load_banner_ids()">
+                                                            <option value="category">Category</option>
+                                                            <option value="subcategory">Subcategory</option>
+                                                            <option value="subcategory2">Second Subcategory</option>
+                                                            <option value="product">Product</option>
+                                                            <option value="vendor">Vendor</option>
+                                                            <option value="offer">Offer</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l4 mb-0" id="outer_banner_type_id">
+                                                        <select class="m-0 p-0 browser-default" id="banner_type_id"
+                                                            name="banner_type_id">
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0" id="outer-banner_url">
+                                                        <input class="m-0" id="banner_url" name="banner_url" type="text"
+                                                        >
+                                                        <label for="banner_url">Enter banner url *</label>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0" id="outer-banner-name">
+                                                        <input class="m-0" id="offer_banner_name" name="offer_banner_name" type="text"
+                                                        >
+                                                        <label for="offer_banner_name">Enter offer name *</label>
+                                                    </div>
+                                                    <div class="input-field col l2 mb-0">
+                                                        <input class="m-0" id="priority" name="priority" type="text"
+                                                            onkeypress="return banner.isNumberKey(event)" maxlength="2"
+                                                            minlength="1">
+                                                        <label for="priority">Enter Priority *</label>
+                                                    </div>
+                                                    <div class="input-field col l2 mb-0">
+                                                        <input class="m-0 datepicker" id="start_date" name="start_date"
+                                                            type="text" readonly>
+                                                        <label for="start_date"> Start Date *</label>
+                                                    </div>
+                                                    <div class="input-field col l2 mb-0">
+                                                        <input class="m-0 datepicker-1" id="end_date" name="end_date"
+                                                            type="text" readonly>
+                                                        <label for="end_date"> End Date *</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col l3 m-0 parent">
+                                                        <label for="upload_subcategory_excel_2" class="font-12" id="upload_banner_label"  title="Upload Excel Document">Upload Web Banner (Should be 1600x450px, Max size 500kb) :</label>
+                                                            <input type="file" id="banner_image"
+                                                                data-append-class="banner_container"
+                                                                data-progress-bar="banner_bar"
+                                                                data-common-class="banner_block"
+                                                                data-subfolder-name="banner_images"
+                                                                data-is-multiple="false"
+                                                                onchange="UPLOAD_BANNER(this, event)" accept=".jpg,.png"
+                                                                name="banner_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="banner_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 banner-image-preview banner_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col l3 m-0 parent">
+                                                        <label class="font-12"  title="Upload Excel Document">Upload Mobile Banner (Should be 400x300px,  Max size 500kb) :</label>
+                                                            <input type="file" id="mobile_banner_image"
+                                                                data-append-class="mobile_banner_container"
+                                                                data-progress-bar="mobile_banner_bar"
+                                                                data-common-class="mobile_banner_block"
+                                                                data-subfolder-name="mobile_banner_images"
+                                                                data-is-multiple="false"
+                                                                onchange="UPLOAD_MOBILE_BANNER(this, event)" accept=".jpg,.png"
+                                                                name="mobile_banner_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="mobile_banner_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 mobile_banner-image-preview mobile_banner_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col l4 mb-0">
+                                                        <input class="m-0" id="tag_line" name="tag_line" type="text"
+                                                            maxlength="50">
+                                                        <label for="tag_line">Enter Tag Line *</label>
+                                                    </div>
+                                                    <div class="input-field col l2 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="banner_status"
+                                                            name="banner_status">
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <!-- <div class="input-field col l12 mb-0 mt-2">
+                                                        <input class="m-0" id="description_banner" name="description_banner" type="text">
+                                                        <label for="description_banner">Enter Banner Description</label>
+                                                    </div> -->
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="banner_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="banner_table" style="width:100%;">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="topic_master" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                       
+                                        <form id="topic_form">
+                                            <div class="row">
+                                                <div class="col l2 mt-1">
+                                                    <select class="m-0 p-0 browser-default" id="topic_type"
+                                                    name="topic_type">
+                                                        <option value="section">Section</option>
+                                                        <option value="icon">Quick Links</option>
+                                                        <option value="shop_by_concern">Shop By Concern</option>
+                                                    </select>
+                                                </div>
+                                                <div class="input-field col l4 mt-1">
+                                                    <input class="m-0" id="topic_name" name="topic_name"
+                                                        type="text" maxlength="100">
+                                                    <label for="topic_name">Topic Name *</label>
+                                                </div>
+                                                <div class="col l2 m-0 parent topicIconBlock">
+                                                    <label class="font-12" id="upload_topic_label"  title="Upload Icon">Upload Icon (100x100px):</label>
+                                                        <input type="file" id="topic_image"
+                                                            data-append-class="topic_container"
+                                                            data-progress-bar="topic_bar"
+                                                            data-common-class="topic_block"
+                                                            data-subfolder-name="topic_images"
+                                                            data-is-multiple="false"
+                                                            onchange="UPLOAD_TOPIC(this, event)" accept=".jpg,.png"
+                                                            name="topic_image" value="">
+                                                    <div class="progress m-0">
+                                                        <div id="topic_bar" class="determinate" style="width: 0%;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-1 topic-image-preview topic_container">
+
+                                                    </div>
+                                                </div>
+                                                <div class="input-field col l1 mt-1 mb-0">
+                                                    <input class="m-0" id="topic_priority" name="topic_priority" type="text"
+                                                        onkeypress="return banner.isNumberKey(event)" maxlength="2"
+                                                        minlength="1">
+                                                    <label for="topic_priority">Enter Priority *</label>
+                                                </div>
+                                                <div class="col l1 mt-1">
+                                                    <select class="m-0 p-0 browser-default" id="status"
+                                                    name="status">
+                                                        <option value="active">Active</option>
+                                                        <option value="inactive">Inactive</option>
+                                                    </select>
+                                                </div>
+                                                
+                                                <div class="col l show-btn mt-1">
+                                                    <button id="create_topic"
+                                                        class="btn btn-block flex-btn float-left indigo waves-effect waves-light"
+                                                        style="width: auto !important">
+                                                        <span id="create_topic_btn">Submit</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form> 
+                                        <h6>Filters</h6>
+
+                                        <div class="row">
+                                            <div class="col l2 mt-1">
+                                                <select class="m-0 p-0 browser-default" id="topic_type1"
+                                                name="topic_type">
+                                                    <option value="1">Select type</option>
+                                                    <option value="section">Section</option>
+                                                    <option value="icon">Quick Links</option>
+                                                    <option value="shop_by_concern">Shop By Concern</option>
+                                                </select>
+                                            </div>
+                                            <div class="col l2 mt-1">
+                                                <select class="m-0 p-0 browser-default" id="status1"
+                                                name="status">
+                                                    <option value="1">Select status</option>
+                                                    <option value="active">Active</option>
+                                                    <option value="inactive">Inactive</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="col 2 show-btn mt-1">
+                                                <button type="submit" id="filter_topic_btn"
+                                                    class="btn btn-block flex-btn float-left indigo waves-effect waves-light"
+                                                    style="width: auto !important">
+                                                    <span id="filter_topic_btn1">filter</span>
+                                                </button>
+                                            </div>
+                                            <div class="col 2 show-btn mt-1">
+                                                <button type="submit" id="reset_button"
+                                                    class="btn btn-block flex-btn float-right waves-effect waves-light gradient-45deg-deep-orange-orange"
+                                                    style="width: auto !important">
+                                                    <span id="">Reset</span>
+                                                </button>
+                                            </div>
+                                            <!-- <div class="input-field col l1 mb-0">
+                                                <div class="input-field select-pill mt-0 mb-0 pt-0 pb-0" style="width: 100%">
+                                                   <button style="margin-top: 5px;" class="btn btn-block flex-btn float-right waves-effect waves-light gradient-45deg-deep-orange-orange" id="reset_button">Reset</button>
+                                                </div>
+                                            </div> -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="topic_id" value="" id="topic_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="topic_table" style="width: 100%">
+            
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="top_products" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <input type="hidden" name="top_product_id" id="top_product_id" value="">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="top_product_form">
+                                            <div class="row d-flex">
+
+                                                <div class="input-field col l2 mb-0">
+                                                    <select class="m-0 p-0 browser-default" id="category_id"
+                                                        name="category_id" onchange="top_products.load_subCategory(this);">
+                                                        <option value="">Select Category *</option>
+                                                        
+                                                    </select>
+                                                   
+                                                </div>
+
+                                                <div class="input-field col l2 mb-0">
+                                                    <select class="m-0 p-0 browser-default" id="sub_category_id"
+                                                        name="sub_category_id" onchange="top_products.render_products_by_subcategory(this);">
+                                                        <option value="">Select Sub-Category </option>
+                                                        
+                                                    </select>
+                                                </div>
+
+                                                <div class="input-field col l6 mb-0">    
+                                                    <fieldset class="access-controll">
+                                                        <div class="col l2 comment-box">
+                                                            <p>Select Products</p>
+                                                            <input type="hidden" id="selected_product_id">
+                                                        </div>
+                                                        <div class="col l9 comment-box">
+                                                            <div class="input-field select-pill mt-0 mb-0 pt-0 pb-0">
+                                                                <select class="m-0 p-0 related_products browser-default" id="related_products" name="selected_product_id" multiple multiselect-search="true">
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+
+                                                <div class="input-field col l2 mb-0">
+                                                    <input class="m-0" id="top_productpriority" name="top_productpriority" type="text"
+                                                        onkeypress="return top_products.isNumberKey(event)" maxlength="2"
+                                                        minlength="1">
+                                                    <label for="top_productpriority">Enter Priority *</label>
+                                                </div>
+
+                                                <div class="input-field col l2 mb-0">
+                                                    <select class="m-0 p-0 browser-default" id="topProduct_status"
+                                                        name="blog_status">
+                                                        <option value="active">Active</option>
+                                                        <option value="inactive">Inactive</option>
+                                                    </select>
+                                                </div>
+                                               
+                                            </div>
+                                            
+                                            <div class="row" style="margin-top: 10%;">
+                                                <div class="col l12 show-btn mt-2">
+                                                    <button type="submit" id="create_top_product"
+                                                        class="btn btn-block flex-btn float-right indigo waves-effect waves-light"
+                                                        style="width: auto !important">
+                                                        <span id="create_top_product_btn">Submit</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- <input type="hidden" val="" id="banner_id"> -->
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="top_products_table" style="width:100%;">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="featured_banner" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="featured_banner_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l3 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="featured_banner_type"
+                                                            name="featured_banner_type" onchange="CHECK_BANNER(this, event)">
+                                                            <option value="hompage_featured_banner">Homepage Featured Banner</option>
+                                                            <option value="blog_featured_banner">Blog Featured Banner</option>
+                                                            <option value="offer_featured_banner">Offer Featured Banner</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l2 mt-1">
+                                                        <input class="m-0" id="featured_title" name="featured_title"
+                                                            type="text" maxlength="100">
+                                                        <label for="featured_title">Title*</label>
+                                                    </div>
+                                                    <div class="col l2 m-0 parent">
+                                                        <label for="upload_web_featured_banner" class="font-12 uplod_web_title"  title="Upload Marketing Banner">Upload Web Banner (1200 x 150px, Max size 70kb):</label>
+                                                            <input type="file" id="web_featured_banner_image"
+                                                                data-append-class="web_featured_banner_container"
+                                                                data-progress-bar="web_featured_banner_bar"
+                                                                data-common-class="web_featured_banner_block"
+                                                                data-subfolder-name="web_featured_banner_images"
+                                                                data-is-multiple="false"
+                                                                data-banner-width-web="1200"
+                                                                data-banner-height-web="150"
+                                                                onchange="UPLOAD_WEB_FEATURED_BANNER(this, event)" accept=".jpg,.png"
+                                                                name="web_featured_banner_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="web_featured_banner_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 bottom-banner-image-preview web_featured_banner_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col l2 m-0 parent">
+                                                        <label for="upload_mobile_featured_banner" class="font-12 uplod_mob_title"  title="Upload Marketing Banner">Upload Mobile Banner (425 x 280px, Max size 40kb):</label>
+                                                            <input type="file" id="mobile_featured_banner_image"
+                                                                data-append-class="mobile_featured_banner_container"
+                                                                data-progress-bar="mobile_featured_banner_bar"
+                                                                data-common-class="mobile_featured_banner_block"
+                                                                data-subfolder-name="mobile_featured_banner_images"
+                                                                data-is-multiple="false"
+                                                                data-banner-width-mob="425"
+                                                                data-banner-height-mob="280"
+                                                                onchange="UPLOAD_MOBILE_FEATURED_BANNER(this, event)" accept=".jpg,.png"
+                                                                name="mobile_featured_banner_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="mobile_featured_banner_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 mobile_bottom-banner-image-preview mobile_featured_banner_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="featured_banner_url" name="featured_banner_url"
+                                                            type="text">
+                                                        <label for="featured_banner_url"> URL </label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-field col l1 mb-0">
+                                                        <input class="m-0" id="featured_banner_priority" name="featured_banner_priority" type="text"
+                                                            onkeypress="return banner.isNumberKey(event)" maxlength="2"
+                                                            minlength="1">
+                                                        <label for="featured_banner_priority">Enter Priority *</label>
+                                                    </div>
+                                                    <div class="input-field col l1 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="featured_banner_status"
+                                                            name="featured_banner_status">
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l1 m-0" style="float: right;">
+                                                        <button type="submit" id="create_featured_banner"
+                                                            class="btn btn-block flex-btn float-left gradient-45deg-green-teal waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_featured_banner_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- </div> -->
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="featured_banner_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="featured_banner_table" style="width: 100%">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="spotlight_banner" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="spotlight_banner_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l2 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="select_banner_type"
+                                                            name="select_banner_type">
+                                                            <option value="spotlight">Spotlight Banner</option>
+                                                            <option value="gift_card">Gift Card Banner</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col l3 m-0 parent">
+                                                        <label for="upload_spotlight_banner" class="font-12"  title="Upload Marketing Banner">Upload Banner (420 x 290px, Max size 120kb):</label>
+                                                            <input type="file" id="spotlight_banner_image"
+                                                                data-append-class="spotlight_banner_container"
+                                                                data-progress-bar="spotlight_banner_bar"
+                                                                data-common-class="spotlight_banner_block"
+                                                                data-subfolder-name="spotlight_banner_images"
+                                                                data-is-multiple="false"
+                                                                onchange="UPLOAD_spotlight_BANNER(this, event)" accept=".jpg,.png"
+                                                                name="spotlight_banner_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="spotlight_banner_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 spotlight-banner-image-preview spotlight_banner_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="spotlight_banner_url" name="spotlight_banner_url"
+                                                            type="text">
+                                                        <label for="spotlight_banner_url"> URL </label>
+                                                    </div>
+                                                    <div class="input-field col l1 mb-0">
+                                                        <input class="m-0" id="spotlight_banner_priority" name="spotlight_banner_priority" type="text"
+                                                            onkeypress="return banner.isNumberKey(event)" maxlength="2"
+                                                            minlength="1">
+                                                        <label for="spotlight_banner_priority">Enter Priority *</label>
+                                                    </div>
+                                                    <div class="col l1 mt-1">
+                                                        <select class="m-0 p-0 browser-default" id="spotlight_banner_status"
+                                                        name="spotlight_banner_status">
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l1 m-0">
+                                                        <button type="submit" id="create_spotlight_banner"
+                                                            class="btn btn-block flex-btn float-left gradient-45deg-green-teal waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_spotlight_banner_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- </div> -->
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="spotlight_banner_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="spotlight_banner_table" style="width: 100%">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="recipe_category" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="recipe_category_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="recipe_category_name" name="recipe_category_name"
+                                                            type="text">
+                                                        <label for="recipe_category_name"> Category Name </label>
+                                                    </div>
+                                                    <div class="col l3 m-0 parent">
+                                                        <label for="upload_recipe_category" class="font-12"  title="Upload Recipe Category Icon">Upload Category Icon(100x100px):</label>
+                                                            <input type="file" id="recipe_category_image"
+                                                                data-append-class="recipe_category_container"
+                                                                data-progress-bar="recipe_category_bar"
+                                                                data-common-class="recipe_category_block"
+                                                                data-subfolder-name="recipe_category_images"
+                                                                data-is-multiple="false"
+                                                                onchange="UPLOAD_recipe_category(this, event)" accept=".jpg,.png"
+                                                                name="recipe_category_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="recipe_category_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 spotlight-banner-image-preview recipe_category_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col l1 mt-1">
+                                                        <select class="m-0 p-0 browser-default" id="recipe_category_status"
+                                                        name="recipe_category_status">
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l1 m-0">
+                                                        <button type="submit" id="create_recipe_category"
+                                                            class="btn btn-block flex-btn float-left gradient-45deg-green-teal waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_recipe_category_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- </div> -->
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="recipe_category_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="recipe_category_table" style="width: 100%">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="recipe" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="recipe_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l3 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="select_recipe_category"
+                                                            name="select_recipe_category">
+                                                        </select>
+                                                    </div>
+                                                    <!-- <div class="input-field col l2 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="recipe_type"
+                                                            name="recipe_type">
+                                                            <option value="veg">Veg</option>
+                                                            <option value="non_veg">Non Veg</option>
+                                                        </select>
+                                                    </div> -->
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="recipe_title" name="recipe_title"
+                                                            type="text">
+                                                        <label for="recipe_title"> Title </label>
+                                                    </div>
+                                                    <div class="col l2 m-0 parent">
+                                                        <label for="upload_recipe" class="font-12"  title="Upload Recipe">Upload Image(1200x400px):</label>
+                                                            <input type="file" id="recipe_image"
+                                                                data-append-class="recipe_container"
+                                                                data-progress-bar="recipe_bar"
+                                                                data-common-class="recipe_block"
+                                                                data-subfolder-name="recipe_images"
+                                                                data-is-multiple="false"
+                                                                onchange="UPLOAD_RECIPE(this, event)" accept=".jpg,.png"
+                                                                name="recipe_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="recipe_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 bottom-banner-image-preview recipe_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col l2 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="recipe_status"
+                                                            name="recipe_status">
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l12 mb-0">
+                                                        <textarea id="recipe_description" name="recipe_description" class="m-0"></textarea>
+                                                        <label for="recipe_description"> Description </label>
+                                                    </div>
+                                                    <div class="input-field col l12 m-0 mt-1">
+                                                        <button type="submit" id="create_recipe"
+                                                            class="btn btn-block flex-btn float-right gradient-45deg-green-teal waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_recipe_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- </div> -->
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="recipe_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="recipe_table" style="width: 100%">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="newsletter" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="newsletter_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="newsletter_title" name="newsletter_title"
+                                                            type="text">
+                                                        <label for="newsletter_title"> Title </label>
+                                                    </div>
+                                                    <div class="input-field col l6 mb-0">
+                                                        <input class="m-0" id="newsletter_short_description" name="newsletter_short_description"
+                                                        type="text">
+                                                        <label for="newsletter_short_description"> Short Description </label>
+                                                    </div>
+                                                    <div class="col l2 m-0 parent">
+                                                        <label for="upload_newsletter" class="font-12"  title="Upload Newsletter">Upload Image(215x230px):</label>
+                                                            <input type="file" id="newsletter_image"
+                                                                data-append-class="newsletter_container"
+                                                                data-progress-bar="newsletter_bar"
+                                                                data-common-class="newsletter_block"
+                                                                data-subfolder-name="newsletter_images"
+                                                                data-is-multiple="false"
+                                                                onchange="UPLOAD_NEWSLETTER(this, event)" accept=".jpg,.png"
+                                                                name="newsletter_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="newsletter_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 bottom-banner-image-preview newsletter_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col l1 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="newsletter_status"
+                                                            name="newsletter_status">
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l9 mb-0">
+                                                        <textarea id="newsletter_description" name="newsletter_description" class="m-0" style="height: 300px;"></textarea>
+                                                        <label for="newsletter_description"> Paste the HTML Snippet </label>
+                                                    </div>
+                                                    <div class="input-field col l1 m-0">
+                                                        <button type="submit" id="create_newsletter"
+                                                            class="btn btn-block flex-btn float-left gradient-45deg-green-teal waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_newsletter_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- </div> -->
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="newsletter_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="newsletter_table" style="width: 100%">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="media" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="media_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="media_title" name="media_title"
+                                                            type="text">
+                                                        <label for="media_title"> Title </label>
+                                                    </div>
+                                                    <!-- <div class="input-field col l6 mb-0">
+                                                        <input class="m-0" id="media_description" name="media_description"
+                                                            type="text">
+                                                        <label for="media_description"> Description </label>
+                                                    </div> -->
+                                                    <div class="col l3 m-0 parent">
+                                                        <label for="upload_media" class="font-12"  title="Upload media">Upload Image:</label>
+                                                            <input type="file" id="media_image"
+                                                                data-append-class="media_container"
+                                                                data-progress-bar="media_bar"
+                                                                data-common-class="media_block"
+                                                                data-subfolder-name="media_images"
+                                                                data-is-multiple="false"
+                                                                onchange="UPLOAD_MEDIA(this, event)" accept=".jpg,.png"
+                                                                name="media_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="media_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 bottom-banner-image-preview media_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col l2 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="media_status"
+                                                            name="media_status">
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l2 m-0">
+                                                        <button type="submit" id="create_media"
+                                                            class="btn btn-block flex-btn float-left gradient-45deg-green-teal waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_media_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- </div> -->
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="media_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="media_table" style="width: 100%">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="video" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="video_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l4 mb-0" id="urlBlock">
+                                                        <input class="m-0" id="video_url" name="video_url"
+                                                            type="text">
+                                                        <label for="video_url">Enter Youtube Embed URL </label>
+                                                    </div>
+                                                    <div class="col l3 m-0 parent">
+                                                        <label for="upload_video" class="font-12"  title="Upload video">Upload Image(595x335px, Max size 80kb):</label>
+                                                            <input type="file" id="video_image"
+                                                                data-append-class="video_container"
+                                                                data-progress-bar="video_bar"
+                                                                data-common-class="video_block"
+                                                                data-subfolder-name="video_images"
+                                                                data-is-multiple="false"
+                                                                onchange="UPLOAD_VIDEO_IMAGE(this, event)" accept=".jpg,.png"
+                                                                name="video_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="video_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 bottom-banner-image-preview video_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col l1 mb-0">
+                                                        <input class="m-0" id="video_priority" name="video_priority" type="text"
+                                                            onkeypress="return banner.isNumberKey(event)" maxlength="2"
+                                                            minlength="1">
+                                                        <label for="video_priority">Enter Priority *</label>
+                                                    </div>
+                                                    <div class="col l4 m-0 parent" id="videoBlock">
+                                                        <label for="upload_video" class="font-12"  title="Upload video">Upload Video:</label>
+                                                            <input type="file" id="video_image"
+                                                                data-append-class="video_container"
+                                                                data-progress-bar="video_bar"
+                                                                data-common-class="video_block"
+                                                                data-subfolder-name="video_images"
+                                                                data-is-multiple="false"
+                                                                onchange="UPLOAD_VIDEO(this, event)" accept=".mp4"
+                                                                name="video_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="video_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 bottom-banner-image-preview video_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col l1 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="video_status"
+                                                            name="video_status">
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l2 m-0">
+                                                        <button type="submit" id="create_video"
+                                                            class="btn btn-block flex-btn float-left gradient-45deg-green-teal waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_video_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- </div> -->
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="video_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="video_table" style="width: 100%">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="shop_by_brand" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="shop_by_brand_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l2 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="select_vendor"
+                                                            name="select_vendor">
+                                                        </select>
+                                                    </div>
+                                                    <div class="col l3 m-0 parent">
+                                                        <label class="font-12" id="upload_vendor_label"  title="Upload Excel Document">Upload Brand Image (Should be 300x300px, Max size 80kb):</label>
+                                                            <input type="file" id="vendor_image"
+                                                                data-append-class="vendor_container"
+                                                                data-progress-bar="vendor_bar"
+                                                                data-common-class="vendor_block"
+                                                                data-subfolder-name="vendor_images"
+                                                                data-is-multiple="false"
+                                                                onchange="UPLOAD_BRAND_BANNER(this, event)" accept=".jpg,.png"
+                                                                name="vendor_image" value="">
+                                                        <div class="progress m-0">
+                                                            <div id="vendor_bar" class="determinate" style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-1 vendor-image-preview vendor_container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col l4 mb-0">
+                                                        <input class="m-0" id="vendor_title" name="vendor_title" type="text"
+                                                            maxlength="50">
+                                                        <label for="vendor_title">Enter Title *</label>
+                                                    </div>
+                                                    <div class="input-field col l1 mb-0">
+                                                        <input class="m-0" id="vendor_priority" name="vendor_priority" type="text"
+                                                            onkeypress="return banner.isNumberKey(event)" maxlength="2"
+                                                            minlength="1">
+                                                        <label for="priority">Priority *</label>
+                                                    </div>
+                                                    <div class="input-field col l1 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="shop_by_brand_status"
+                                                            name="shop_by_brand_status">
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col l1 show-btn mt-1">
+                                                        <button type="submit" id="create_shop_by_brand"
+                                                            class="btn btn-block flex-btn float-left gradient-45deg-green-teal waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_shop_by_brand_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="shop_by_brand_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="shop_by_brand_table" style="width:100%;">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="settings" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="section_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l2 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="select_section_type"
+                                                            name="select_section_type">
+                                                            <option value="Category">Category</option>
+                                                            <option value="Why buy from us">Why buy from us</option>
+                                                            <option value="Recently viewed products">Recently viewed products</option>
+                                                            <option value="Featured products">Featured products</option>
+                                                            <option value="Topics">Topics</option>
+                                                            <option value="Spotlight">Spotlight</option>
+                                                            <option value="Quick links">Quick Links</option>
+                                                            <option value="shop_by_concern_quick_links">Shop by Concern</option>
+                                                            <option value="Featured Blogs">Featured Blogs</option>
+                                                            <option value="Recipe">Recipe</option>
+                                                            <option value="Shop by Brand">Shop by Brand</option>
+                                                            <option value="Shopping Guide">Shopping Guide</option>
+                                                            <option value="Newsletter">Newsletter</option>
+                                                            <option value="Gift Card">Gift Card</option>
+                                                            <option value="Our Happy Customers">Our Happy Customers</option>
+                                                            <option value="Youcare TV">Youcare TV</option>
+                                                            <option value="Media">Media</option>
+                                                            <option value="Inner Banner">Inner Banner</option>
+                                                            <option value="Recommended Products">Recommended Products</option>
+                                                            <option value="Top Products">Top Products</option>
+                                                            <option value="Top Header">Top Header</option>
+                                                            <option value="Primary Header">Primary Header</option>
+                                                            <option value="Quick links">Quick Links</option>
+                                                            <option value="Footer Section">Footer Section</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l2 mb-0" id="select_section_reference_block">
+                                                        <select class="m-0 p-0 browser-default" id="select_section_reference"
+                                                            name="select_section_reference">
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l1 mb-0">
+                                                        <input class="m-0" id="section_priority" name="section_priority" type="text"
+                                                            onkeypress="return banner.isNumberKey(event)" maxlength="2"
+                                                            minlength="1">
+                                                        <label for="section_priority">Enter Priority *</label>
+                                                    </div>
+                                                    <div class="input-field col l2 mb-0">
+                                                        <input  class="m-0" type="color" id="section_color" name="section_color"
+                                                        value="#FFF7EB">
+                                                        <label for="section_color" style="top: 20px">Select Background Color</label>
+                                                    </div>
+                                                    <div class="input-field col l2 mb-0">
+                                                        <input  class="m-0" type="color" id="section_text_color" name="section_text_color"
+                                                        value="#000000">
+                                                        <label for="section_text_color" style="top: 20px">Select Title Color</label>
+                                                    </div>
+                                                    <div class="input-field col l1 m-0">
+                                                        <button type="submit" id="create_section"
+                                                            class="btn btn-block flex-btn float-left gradient-45deg-green-teal waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_section_btn">Submit</span>
+                                                        </button>
+                                                    </div>
+                                                    <!-- <div class="input-field col l3 m-0">
+                                                        <button type="button" id="resect_section_color"
+                                                            class="btn btn-block flex-btn float-left gradient-45deg-deep-orange-orange waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="reset_section_color_btn">Reset All Default Colors</span>
+                                                        </button>
+                                                    </div> -->
+                                                </div>
+                                                <!-- </div> -->
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="section_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="section_table" style="width: 100%">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content-overlay"></div>
+        </div>
+    </div>
+</div>
+<div id="newsletter_modal" class="modal" style="width: 60%;">
+    <div class="modal-content">
+        <div id="newletterBlock"></div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" id="close_newsletter_modal"
+                class="btn modal-action modal-close waves-effect waves-light float-right gradient-45deg-deep-orange-orange">Close</button>
+    </div>
+</div>
+
+<div id="images_modal" class="modal" style="width:70%">
+    <div class="modal-content">
+
+        <div class="row">
+            <div class="col l12 center">
+                <h5>Description</h5>
+                <hr>
+            </div>
+
+            <div class="view images_model" style="justify-content: center;">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="close_edit_modal"
+                    class="btn modal-action modal-close waves-effect waves-light gradient-45deg-deep-orange-orange">Close</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- popup end -->
+</div>
+<% include layout/footer %>
+<script type="text/javascript" src="/admin/js/tinymce/tinymce/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            dateFormat: 'dd-mm-yy',
+            minDate: new Date()
+        });
+        $('.datepicker-1').datepicker({
+            dateFormat: 'dd-mm-yy',
+            minDate: new Date()
+        });
+        // $('#user_access_modal').modal();
+
+        $("#start_date").change(function () {
+            $('.datepicker-1').datepicker({
+                dateFormat: 'dd-mm-yy',
+                minDate: new Date($("#start_date").val())
+            });
+        });
+    });
+    $(document).ready(function () {
+        tinymce.init({
+            selector: "#recipe_description",
+            height: "300",
+            plugins: 'print preview importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help'
+        });
+        $('.modal').modal();
+    });
+</script>

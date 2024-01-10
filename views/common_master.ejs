@@ -1,0 +1,461 @@
+<% include layout/header %>
+<style>
+    .a-101:hover {
+        color: #000 !important;
+    }
+
+    .abc-101 {
+        text-transform: capitalize !important;
+    }
+    .responsive-navbar-class::-webkit-scrollbar {
+        width: 2px;
+    }
+    .responsive-navbar-class {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        display: flex;
+        height: auto !important;
+        flex-wrap: nowrap;
+    }
+</style>
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before transparent_bg"></div>
+        <div class="col s12">
+            <div class="container">
+                <!-- users list start -->
+                <section>
+                    <div class="row">
+                        <div class="col s12">
+                            <nav class="nav-extended">
+                                <div class="nav-content">
+                                    <ul class="tabs tabs-transparent responsive-navbar-class">
+                                        <li class="tab"><a class="active" href="#user_management">Users</a>
+                                        </li>
+                                     
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <!-- User management -->
+                        <div id="user_management" class="col s12">
+                            <section class="users-list-wrapper section">
+                                <div class="users-list-filter">
+                                    <div class="card-panel position-relative overflow-hidden">
+                                        <form id="user_form">
+                                            <fieldset class="access-controll">
+                                                <div class="row">
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="name" name="name"
+                                                            onkeydown="preventNumberInput(event)"
+                                                            onkeyup="preventNumberInput(event)" type="text">
+                                                        <label for="name"> Name *</label>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="mobile_number" name="mobile_number"
+                                                            type="number" maxlength="10">
+                                                        <label for="mobile_number"> Mobile Number *</label>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="email" name="email" type="text">
+                                                        <label for="email"> Email *</label>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0">
+                                                        <input class="m-0" id="address" name="address" type="text">
+                                                        <label for="address">Address *</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-field col l3 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="user_type"
+                                                            name="user_type">
+                                                            <option value="">Select user type *</option>
+                                                            <option value="admin">Admin</option>
+                                                       
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-field col l3 mb-0">
+                                                        <select class="m-0 p-0 browser-default" id="user_status"
+                                                            name="user_status">
+                                                            <option value="">Select user status *</option>
+                                                            <option value="active">Active</option>
+                                                            <option value="inactive">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <!-- <div class="col l3 show-btn">
+                                                        <button type="button" id="user_access"
+                                                            class="btn btn-block flex-btn float-left waves-effect waves-light"
+                                                            style="width: auto !important;color: green;
+                                                            background-color: #fff;
+                                                            font-weight: bold;">
+                                                            <span id="user_access_btn" data-target="#user_access_modal">User Access</span>
+                                                        </button>
+                                                    </div> -->
+                                                    <div class="col l3 show-btn">
+                                                        <button type="submit" id="create_user"
+                                                            class="btn btn-block flex-btn float-left indigo waves-effect waves-light"
+                                                            style="width: auto !important">
+                                                            <span id="create_user_btn">Add User</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <input type="hidden" val="" id="user_id">
+                                <div class="users-list-table">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <!-- datatable start -->
+                                            <div class="responsive-table">
+                                                <table class="table" id="user_table">
+
+                                                </table>
+                                            </div>
+                                            <!-- datatable ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <div class="content-overlay"></div>
+        </div>
+    </div>
+</div>
+<div id="user_access_modal" class="modal" style="width: 50%;">
+    <div class="modal-content">
+        <form id="access_form">
+            <div class="row">
+                <div class="col l12 center">
+                    <h5>Set user access</h5>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col l12">
+                        <b>App Master</b>
+                    </div>
+                    <p class="col l4">
+                        <label>
+                            <input value="edit" class="app-master-access app_master_edit" name="app-master-access"
+                                type="checkbox">
+                            <span>Edit</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="app-master-access app_master_view" name="app-master-access"
+                                type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="app-master-access app_master_delete" name="app-master-access"
+                                type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                    <div class="col l12">
+                        <hr>
+                        <b>Web Master</b>
+                    </div>
+                    <p class="col l4">
+                        <label>
+                            <input value="edit" class="web-master-access web_master_edit" name="web-master-access"
+                                type="checkbox">
+                            <span>Edit</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="web-master-access web_master_view" name="web-master-access"
+                                type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="web-master-access web_master_delete" name="web-master-access"
+                                type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="admin_email" class="web-master-access web_master_email" name="web-master-access"
+                            type="checkbox">
+                            <span>Send Admin Email</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete_report_email" class="web-master-access web_master_delete_email" name="web-master-access"
+                            type="checkbox">
+                            <span>Send Delete Report Email</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="order_cancel_email" class="web-master-access order_cancel_request_email" name="web-master-access"
+                            type="checkbox">
+                            <span>Order Cancel Email</span>
+                        </label>
+                    </p>
+                    
+                    <p class="col l4">
+                        <label>
+                            <input value="edit" class="reports-access reports_edit" name="reports-access"
+                                type="checkbox">
+                            <span>Edit</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="reports-access reports_view" name="reports-access"
+                                type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="reports-access reports_delete" name="reports-access"
+                                type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                    <div class="col l12">
+                        <hr>
+                        <b>Recipe</b>
+                    </div>
+                    <p class="col l4">
+                        <label>
+                            <input value="edit" class="recipe-access recipe_edit" name="recipe-access" type="checkbox">
+                            <span>Edit</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="recipe-access recipe_view" name="recipe-access" type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="recipe-access recipe_delete" name="recipe-access"
+                                type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                    <div class="col l12">
+                        <hr>
+                        <b>Policies Master</b>
+                    </div>
+                    <p class="col l4">
+                        <label>
+                            <input value="edit" class="policies-access policies_edit" name="policies-access" type="checkbox">
+                            <span>Edit</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="policies-access policies_view" name="policies-access" type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="policies-access policies_delete" name="policies-access"
+                                type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                    <div class="col l12">
+                        <hr>
+                        <b>Process Code Master</b>
+                    </div>
+                    <p class="col l4">
+                        <label>
+                            <input value="edit" class="processCode-access processCode_edit" name="processCode-access" type="checkbox">
+                            <span>Edit</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="processCode-access processCode_view" name="processCode-access" type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="processCode-access processCode_delete" name="processCode-access"
+                                type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                   
+                    <p class="col l4">
+                        <label>
+                            <input value="edit" class="couponCode-access couponCode_edit" name="couponCode-access" type="checkbox">
+                            <span>Edit</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="couponCode-access couponCode_view" name="couponCode-access" type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="couponCode-access couponCode_delete" name="couponCode-access"
+                                type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                    <div class="col l12">
+                        <hr>
+                        <b>Health Tips</b>
+                    </div>
+                    <p class="col l4">
+                        <label>
+                            <input value="edit" class="healthTips-access healthTips_edit" name="healthTips-access" type="checkbox">
+                            <span>Edit</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="healthTips-access healthTips_view" name="healthTips-access" type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="healthTips-access healthTips_delete" name="healthTips-access"
+                                type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                    <div class="col l12">
+                        <hr>
+                        <b>Gurukul Courses</b>
+                    </div>
+                    <p class="col l4">
+                        <label>
+                            <input value="edit" class="gurukul-access gurukul_edit" name="gurukul-access" type="checkbox">
+                            <span>Edit</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="gurukul-access gurukul_view" name="gurukul-access" type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="gurukul-access gurukul_delete" name="gurukul-access"
+                                type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                    <div class="col l12">
+                        <hr>
+                        <b>Luke Session</b>
+                    </div>
+                    <p class="col l4">
+                        <label>
+                            <input value="edit" class="lukeSession-access lukeSession_edit" name="lukeSession-access" type="checkbox">
+                            <span>Edit</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="lukeSession-access lukeSession_view" name="lukeSession-access" type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="lukeSession-access lukeSession_delete" name="lukeSession-access"
+                                type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                    <div class="col l12">
+                        <hr>
+                        <b>Delete Product Report</b>
+                    </div>
+                    <p class="col l4">
+                        <label>
+                            <input value="view" class="deleteProductReport-access deleteProductReport_view" name="deleteProductReport-access" type="checkbox">
+                            <span>View</span>
+                        </label>
+                    </p>
+                    <p class="col l4">
+                        <label>
+                            <input value="delete" class="deleteProductReport-access deleteProductReport_delete" name="deleteProductReport-access" type="checkbox">
+                            <span>Delete</span>
+                        </label>
+                    </p>
+                    <p class="col l12" style="text-align:right">
+                        <button type="button" id="close_edit_modal"
+                            class="btn modal-action modal-close waves-effect waves-light gradient-45deg-deep-orange-orange">Close</button>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<% include layout/footer %>
+<!-- <script src="/admin/custom/sub_category.js"></script>
+<script src="/admin/custom/subcategory-2.js"></script>
+<script src="/admin/custom/category.js"></script> -->
+<!-- <script src="/admin/custom/delivery_charges_document.js"></script> -->
+<script src="/admin/custom/user.js"></script>
+<!-- <script src="/admin/custom/automation.js"></script> -->
+<!-- <script src="/admin/custom/tags.js"></script> -->
+<!-- <script src="/admin/custom/delivery_charges.js"></script> -->
+<!-- <script src="/admin/custom/product_tags.js"></script> -->
+<!-- <script src="/admin/custom/product_stamps.js"></script> -->
+<script type="text/javascript">
+    $(function () {
+        let access_info = JSON.parse(("<%=user_access%>").split("&#34;").join('"'))[0];
+        user.edit = access_info.web_master_access.indexOf("edit") > -1,
+            user.view = access_info.web_master_access.indexOf("view") > -1,
+            user.del = access_info.web_master_access.indexOf("delete") > -1,
+            user.user_id = "<%=user_id%>";
+        user.base_url = "<%=baseURL%>";
+        user.init();
+    });
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            dateFormat: 'dd-mm-yy',
+            minDate: new Date()
+        });
+        $('.datepicker-1').datepicker({
+            dateFormat: 'dd-mm-yy',
+            minDate: new Date()
+        });
+        $('#user_access_modal').modal();
+        //$('.modal').modal($("#start_date").val());
+
+        $("#start_date").change(function () {
+            $('.datepicker-1').datepicker({
+                dateFormat: 'dd-mm-yy',
+                minDate: new Date($("#start_date").val())
+            });
+        });
+        // $("#end_date").on('click',function () {
+        //     alert("Hi");
+        //     $('.datepicker-1').datepicker({
+        //         dateFormat: 'dd-mm-yy',
+        //         minDate: new Date()
+        //     });
+        // });
+    });
+</script>
